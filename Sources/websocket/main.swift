@@ -1,5 +1,10 @@
 import Foundation
 import SwiftWebSocket
+#if os(Linux)
+    import Glibc
+#else
+    import Darwin.C
+#endif
 
 func echoTest(){
     var messageNum = 0
@@ -36,3 +41,4 @@ print("echoTest")
 echoTest()
 print("waiting")
 sleep(10)
+fflush(stdout)
