@@ -3,7 +3,6 @@ import XCTest
 final class TestsByXCTest: XCTestCase {
     func testExample() throws {
         let expectation: XCTestExpectation? = self.expectation(description: "connected")
-        waitForExpectations(timeout: 5, handler: nil)
 
         let ws = WebSocket("ws://localhost:3000/websocket")
         ws.event.open = {
@@ -16,6 +15,7 @@ final class TestsByXCTest: XCTestCase {
         ws.event.error = { error in
             print("error \(error)")
         }
+        waitForExpectations(timeout: 5, handler: nil)
     }
 
     static var allTests = [
